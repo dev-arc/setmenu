@@ -1,0 +1,9 @@
+{
+    "extends": "stylelint-config-standard",
+    "rules": {
+        "selector-nested-pattern": "^&"
+    },
+    "files.associations": {
+        "*.vue": "postcss"
+    }
+}
