@@ -1,12 +1,19 @@
 import { shallowMount } from '@vue/test-utils';
-import HelloWorld from '@/components/HelloWorld.vue';
+import RecipeListItem from '@/components/RecipeListItem.vue';
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message';
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg },
+describe('RecipeListItem.vue', () => {
+  it('renders recipe title when passed', () => {
+    const recipe = { id: -1, title: 'DEFAULT', subtitle: 'Feeds people real good' };
+    const wrapper = shallowMount(RecipeListItem, {
+      propsData: { recipe },
     });
-    expect(wrapper.text()).toMatch(msg);
+    expect(wrapper.text()).toContain(recipe.title);
+  });
+  it('renders recipe subtitle when passed', () => {
+    const recipe = { id: -1, title: 'DEFAULT', subtitle: 'Feeds people real good' };
+    const wrapper = shallowMount(RecipeListItem, {
+      propsData: { recipe },
+    });
+    expect(wrapper.text()).toContain(recipe.subtitle);
   });
 });
