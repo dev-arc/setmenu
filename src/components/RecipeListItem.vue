@@ -1,10 +1,16 @@
 <template>
-  <div class="recipe-list-item">
+  <div v-on:click="toggleExpand" class="recipe-list-item">
     <div @click="routeToRecipe" class="m-2 text-lg font-bold text-white text-center">
       {{ this.recipe.title }}
     </div>
     <div class="m-4 text-sm font-light text-black text-left">
       {{ this.recipe.subtitle }}
+    </div>
+    <div
+      v-if="this.hasExpanded && this.recipe.description"
+      class="m-4 text-sm font-light text-white text-left"
+    >
+      {{ this.recipe.description }}
     </div>
   </div>
 </template>
@@ -22,9 +28,17 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      hasExpanded: false,
+    };
+  },
   methods: {
     routeToRecipe() {
       this.$router.push({ path: `/recipes/${this.recipe.id}/` });
+    },
+    toggleExpand() {
+      this.hasExpanded = !this.hasExpanded;
     },
   },
 };
