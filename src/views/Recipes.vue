@@ -1,6 +1,11 @@
 <template>
-  <div class="recipes">
-    <RecipeListItem v-for="recipe in recipes" :key="recipe.id" :recipe="recipe"/>
+  <div class="recipes relative">
+    <div v-on:click="createNew" class="create">+ New Recipe</div>
+    <RecipeListItem
+      v-for="recipe in recipes"
+      :key="recipe.id"
+      :recipe="recipe"
+    />
   </div>
 </template>
 
@@ -11,19 +16,30 @@ import RecipeListItem from '@/components/RecipeListItem.vue';
 export default {
   name: 'Recipes',
   props: {
-    recipes: {
-      type: Array,
-      default() {
-        return [
-          { id: 0, title: 'This is a recipe', subtitle: 'Feeds people real good' },
-          { id: 1, title: 'This is another one', subtitle: 'Feeds people real good' },
-          { id: 2, title: 'This is a third', subtitle: 'Feeds people real good' },
-        ];
-      },
-    },
   },
   components: {
     RecipeListItem,
   },
+  computed: {
+    recipes() {
+      return this.$store.state.recipes;
+    },
+  },
+  methods: {
+    createNew() {
+      this.$store.commit('CREATE_RECIPE', {
+        title: 'New recipe',
+        subtitle: 'This is a subtitle',
+      });
+    },
+  },
 };
 </script>
+
+<style lang="postcss" scoped>
+  .create {
+    @apply bg-blue-300 font-semibold text-sm p-2 absolute top-0 select-none cursor-pointer;
+    left: 2.5rem;
+    transform: translateY(-3rem);
+  }
+</style>
