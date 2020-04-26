@@ -1,7 +1,10 @@
+import { uuid } from '../util/util';
+
 export default [
   {
-    id: 0,
+    id: uuid(),
     title: 'This is a recipe',
     subtitle: 'Feeds people real good',
+    description: '',
   },
 ];

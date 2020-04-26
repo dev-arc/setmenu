@@ -1,6 +1,6 @@
 <template>
   <div class="recipe-list-item">
-    <div class="m-2 text-lg font-bold text-white text-center">
+    <div @click="routeToRecipe" class="m-2 text-lg font-bold text-white text-center">
       {{ this.recipe.title }}
     </div>
     <div class="m-4 text-sm font-light text-black text-left">
@@ -20,6 +20,11 @@ export default {
         return { id: -1, title: 'DEFAULT', subtitle: 'Feeds people real good' };
       },
       required: true,
+    },
+  },
+  methods: {
+    routeToRecipe() {
+      this.$router.push({ path: `/recipes/${this.recipe.id}/` });
     },
   },
 };

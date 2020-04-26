@@ -17,6 +17,14 @@ const routes = [
     // this generates a separate chunk (recipes.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "recipes" */ '../views/Recipes.vue'),
+    children: [
+      {
+        path: ':id',
+        name: 'RecipeModal',
+        component: () => import(/* webpackChunkName: "recipe" */ '../components/RecipeModal.vue'),
+        props: true,
+      },
+    ],
   },
 ];
 

@@ -1,22 +1,22 @@
 <template>
   <div class="recipes relative">
-    <div v-on:click="createNew" class="create">+ New Recipe</div>
+    <div @click="createNew" class="create">+ New Recipe</div>
     <RecipeListItem
       v-for="recipe in recipes"
       :key="recipe.id"
       :recipe="recipe"
     />
+    <router-view/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import RecipeListItem from '@/components/RecipeListItem.vue';
+import { uuid } from '../util/util';
 
 export default {
   name: 'Recipes',
-  props: {
-  },
   components: {
     RecipeListItem,
   },
@@ -27,10 +27,9 @@ export default {
   },
   methods: {
     createNew() {
-      this.$store.commit('CREATE_RECIPE', {
-        title: 'New recipe',
-        subtitle: 'This is a subtitle',
-      });
+      const id = uuid();
+      this.$store.commit('CREATE_RECIPE', { id });
+      this.$router.push({ path: `/recipes/${id}/` });
     },
   },
 };
