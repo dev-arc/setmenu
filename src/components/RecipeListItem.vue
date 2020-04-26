@@ -1,5 +1,5 @@
 <template>
-  <div v-on:click="toggleExpand" class="recipe-list-item">
+  <div @click="toggleExpand" class="recipe-list-item">
     <div @click="routeToRecipe" class="m-2 text-lg font-bold text-white text-center">
       {{ this.recipe.title }}
     </div>
