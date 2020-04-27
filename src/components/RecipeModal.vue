@@ -1,5 +1,6 @@
 <template>
   <div class="recipe-modal">
+    <div @click="toggleEditMode" class= "create">Edit</div>
     <div v-if="this.recipe">
       <FormInput
         class="font-bold text-lg"
@@ -7,6 +8,7 @@
         placeholder="Title"
         :value="this.recipe.title"
         :action="updateRecipeProperty"
+        :isInEditMode="isInEditMode"
       />
       <FormInput
         class="text-base"
@@ -14,6 +16,7 @@
         placeholder="Subtitle"
         :value="this.recipe.subtitle"
         :action="updateRecipeProperty"
+        :isInEditMode="isInEditMode"
       />
       <FormInput
         class="font-thin text-sm"
@@ -21,6 +24,7 @@
         placeholder="Enter description"
         :value="this.recipe.description"
         :action="updateRecipeProperty"
+        :isInEditMode="isInEditMode"
       />
     </div>
     <div v-if="this.recipe === null">No Recipe found with this ID.</div>
@@ -48,6 +52,11 @@ export default {
       return this.getRecipe(this.id);
     },
   },
+  data() {
+    return {
+      isInEditMode: false,
+    };
+  },
   methods: {
     updateRecipeProperty(e, key) {
       this.$store.commit('UPDATE_RECIPE_PROPERTY', {
@@ -55,6 +64,9 @@ export default {
         key,
         value: e.target.value,
       });
+    },
+    toggleEditMode() {
+      this.isInEditMode = !this.isInEditMode;
     },
   },
 };
