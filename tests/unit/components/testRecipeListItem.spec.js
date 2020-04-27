@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import RecipeListItem from '@/components/RecipeListItem.vue';
-import defaultRecipe from './testRecipeModel';
+import defaultRecipe from '../testRecipeModel';
 
 describe('RecipeListItem.vue', () => {
   it('renders recipe title when passed', () => {

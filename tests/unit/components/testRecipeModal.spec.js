@@ -1,7 +1,7 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import RecipeModal from '@/components/RecipeModal.vue';
-import defaultRecipe from './testRecipeModel';
+import defaultRecipe from '../testRecipeModel';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
