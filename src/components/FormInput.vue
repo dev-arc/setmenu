@@ -1,12 +1,16 @@
 <template>
-  <input
-    class="form-input"
-    :name="this.propkey"
-    :placeholder="this.placeholder"
-    :value="this.value"
-    @change="doAction"
-    @keyup.enter="doAction"
-  />
+  <div>
+    <input
+      v-if="this.isInEditMode"
+      class="form-input"
+      :name="this.propkey"
+      :placeholder="this.placeholder"
+      :value="this.value"
+      @change="doAction"
+      @keyup.enter="doAction"
+    />
+    <div v-if="!this.isInEditMode" class="form-input">{{ this.value }}</div>
+  </div>
 </template>
 
 <script>
@@ -28,6 +32,11 @@ export default {
     action: {
       type: Function,
       required: true,
+    },
+    isInEditMode: {
+      type: Boolean,
+      default: true,
+      required: false,
     },
   },
   methods: {
