@@ -1,6 +1,7 @@
 <template>
   <div class="recipe-modal">
     <div @click="toggleEditMode" class= "create">Edit</div>
+    <div @click="removeRecipe" class= "create">Delete</div>
     <div v-if="this.recipe">
       <FormInput
         class="font-bold text-lg"
@@ -67,6 +68,9 @@ export default {
     },
     toggleEditMode() {
       this.isInEditMode = !this.isInEditMode;
+    },
+    removeRecipe() {
+      // this.$delete(this.recipe);
     },
   },
 };
