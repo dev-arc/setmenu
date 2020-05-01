@@ -70,7 +70,8 @@ export default {
       this.isInEditMode = !this.isInEditMode;
     },
     removeRecipe() {
-      // this.$delete(this.recipe);
+      this.$store.commit('DELETE_RECIPE', { recipe: this.recipe });
+      this.$router.go(-1);
     },
   },
 };

@@ -15,4 +15,7 @@ export default {
   UPDATE_RECIPE_PROPERTY: (state, { recipe, key, value }) => {
     recipe[key] = value;
   },
+  DELETE_RECIPE: (state, { recipe }) => {
+    state.recipes = state.recipes.filter((r) => r.id !== recipe.id);
+  },
 };
