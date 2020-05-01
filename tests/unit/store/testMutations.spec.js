@@ -7,7 +7,8 @@ describe('Mutations', () => {
     const state = { recipes: [] };
     mutations.CREATE_RECIPE(state, {});
     expect(state.recipes.length).toBe(1);
-    expect(state.recipes[0].title).toBe('');
+    expect(state.recipes[0].title).toContain('New Recipe');
+    expect(state.recipes[0].description).toBe('');
   });
   it('adds new blank recipe model with set id when passed', () => {
     const state = { recipes: [] };
