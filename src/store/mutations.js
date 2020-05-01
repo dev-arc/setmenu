@@ -7,7 +7,7 @@ export default {
   }) => {
     state.recipes.push({
       id: id ?? uuid(),
-      title: title ?? '',
+      title: title ?? `New Recipe #${state.recipes.length}`,
       subtitle: subtitle ?? '',
       description: description ?? '',
     });
