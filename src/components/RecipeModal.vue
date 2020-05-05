@@ -47,6 +47,9 @@ export default {
   components: {
     FormInput,
   },
+  created() {
+    this.isInEditMode = this.$route.query['edit-mode'] === '1';
+  },
   computed: {
     ...mapGetters(['getRecipe']),
     recipe() {
