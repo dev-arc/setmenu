@@ -29,7 +29,7 @@ export default {
     createNew() {
       const id = uuid();
       this.$store.commit('CREATE_RECIPE', { id });
-      this.$router.push({ path: `/recipes/${id}/` });
+      this.$router.push({ path: `/recipes/${id}/?edit-mode=1` });
     },
   },
 };
