@@ -28,9 +28,15 @@ describe('RecipeModal.vue', () => {
    * This tests a computed property that's directly passed to FormInput
    */
   it('title of correct recipe is found', () => {
+    const $route = {
+      query: { 'edit-mode': 1 },
+    };
     const wrapper = shallowMount(RecipeModal, {
       store,
       localVue,
+      mocks: {
+        $route,
+      },
       propsData: { id: validId },
     });
     const { title } = wrapper.vm.recipe;
@@ -41,9 +47,15 @@ describe('RecipeModal.vue', () => {
    * This tests a computed property that fails in the getter
    */
   it('when no recipe found displays "No Recipe found"', () => {
+    const $route = {
+      query: { 'edit-mode': 1 },
+    };
     const wrapper = shallowMount(RecipeModal, {
       store,
       localVue,
+      mocks: {
+        $route,
+      },
       propsData: { id: invalidId },
     });
     expect(wrapper.text()).toContain('No Recipe found');
