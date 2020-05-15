@@ -12,14 +12,6 @@
         :isInEditMode="isInEditMode"
       />
       <FormInput
-        class="text-base"
-        propkey='subtitle'
-        placeholder="Subtitle"
-        :value="this.recipe.subtitle"
-        :action="updateRecipeProperty"
-        :isInEditMode="isInEditMode"
-      />
-      <FormInput
         class="font-thin text-sm"
         propkey='description'
         placeholder="Enter description"
